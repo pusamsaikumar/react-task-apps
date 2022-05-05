@@ -1,0 +1,43 @@
+.App {
+  text-align: center;
+}
+.count-header{
+  color:darkred
+}
+.count-header2{
+  color: darkgoldenrod;
+ 
+}
+.count-header2 span{
+color:darkgreen;
+ padding: 20px;
+}
+.btn-increment{
+  color: darkslategrey;
+  background-color: darkorange;
+  width: 100px;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+.btn-reset{
+  margin-right: 10px;
+  width: 100px;
+  background-color: darkgreen;
+  color: darkgray;
+  padding: 5px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+.btn-decrement{
+  color: ghostwhite;
+  background-color: indigo;
+  width: 100px;
+  padding: 5px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
