@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+}
+/*css for TimeOoutComponent */
+.container{
+  background-color: darkcyan;
+  padding: 30px;
+  margin: 10px;
+}
+.header{
+  color: darkred;
+}
+.header2{
+  color: rgb(227, 241, 227);
+}
+span{
+  color:rgb(82, 22, 22);
+  font-size: large;
+  padding: 10px;
+}
+button{
+  padding: 5px;
+  margin-right: 20px;
+  color: rgb(44, 28, 147);
+  background-color: darkgray;
+  border-radius: 25px;
+  width: 120px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+button:hover{
+  color: darkgoldenrod;
+  background-color: darkslategrey;
+}
+.btns{
+  padding: 5px;
+  margin-right: 20px;
+  color: rgb(44, 28, 147);
+  background-color: darkgray;
+  border-radius: 10px;
+  width: 400px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display:inline-block;
+  text-align: center;
+  margin: 10px;
+}
