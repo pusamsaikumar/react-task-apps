@@ -1,0 +1,29 @@
+const onSubmit=async(e)=>{
+    e.preventDefault()
+    if(password!==password2){
+        console.log('passwords dont match')
+    }else{
+        const newUser={
+            name:name,
+            email:email,
+            password:password
+        }
+        try {
+            const config={
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            }
+            const body=JSON.stringify(newUser)
+
+            //axios has been set up as proxy
+            //http://localhost:3000
+            //we dont need to add the above to url
+            const res =await axios.post('/api/users',body,config)
+            console.log(res.data)
+
+        } catch (error) {
+            console.error(error.response.data)
+        }
+    }
+}
