@@ -1,0 +1,6 @@
+table{
+    background-color: darkgoldenrod;
+}
+th,td{
+    border: 1px solid green;
+}
