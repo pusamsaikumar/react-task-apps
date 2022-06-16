@@ -4,9 +4,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
  import Posts from './components/Posts'
  import CreatePost from './components/CreatePost';
 import GetPosts from './components/GetPosts';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
+    <>
     <BrowserRouter>
      <div className="container">
     <Routes>
@@ -16,6 +19,9 @@ function App() {
     </Routes>
     </div>
     </BrowserRouter>
+    <ToastContainer />
+    </>
+    
    
   );
 }

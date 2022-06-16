@@ -1,6 +1,33 @@
 table{
-    background-color: darkgoldenrod;
+  background-color: darkgoldenrod;
+ 
 }
 th,td{
-    border: 1px solid green;
+  border: 1px solid rgb(181, 184, 181);
+  text-align: center;
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow:10 2 10 rgba(0,0,0,0.8) ; 
+}
+.table-container{
+  margin-top: 20px;
+}
+th{
+  color: darkblue;
+  background-color: darkseagreen;
+}
+td{
+  color: darkred;
+  background-color: rgb(105, 105, 105);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+b{
+  color: darkblue;
+  padding: 8px;
+}
+span{
+  color: darkgoldenrod;
+
+  font-weight: bolder;
 }

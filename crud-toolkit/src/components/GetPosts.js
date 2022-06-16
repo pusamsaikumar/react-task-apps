@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch,useSelector} from 'react-redux';
-import {getpost} from './redux/postSlice';
+import {getpost} from './redux/PostSlice';
 import {useNavigate} from 'react-router-dom';
 
 function GetPosts() {
@@ -37,15 +37,15 @@ function GetPosts() {
                 }
             </tbody>
          </table>
-          <button type="button" class="btn btn-primary" onClick={()=>
+          <button type="button" className="btn btn-primary" onClick={()=>
             dispatch(getpost())
         }>Get Post</button>
-        <button type="button" class="btn btn-info ms-4" onClick={()=>
+        <button type="button" className="btn btn-info ms-4" onClick={()=>
             navigate('/')
         }>Go Back</button> <br></br><br></br>
         <hr></hr>
-        <div class="spinner-border text-danger" role="status">
-             <span class="visually-hidden">Loading...</span>
+        <div className="spinner-border text-danger" role="status">
+             <span className="visually-hidden">Loading...</span>
         </div>
     </div>
    
