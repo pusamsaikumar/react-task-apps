@@ -1,13 +1,14 @@
-import { View, Text } from 'react-native'
-import React from 'react';
+import React from "react";
+import { Button, StyleSheet, Text, View } from 'react-native';
 
-
-const Login = () => {
-  return (
-    <View>
-      <Text>Login</Text>
-    </View>
-  )
+const Login=({navigation})=>{
+    return (
+        <View>
+            <Text> Login </Text>
+            <Button  title="signup" onPress={()=>navigation.navigate('SING UP')}/>
+            <Button  title="scan product" onPress={()=>navigation.navigate('SCAN PRODUCT')}/>
+        </View>
+    );
 }
 
-export default Login
+export default Login;
