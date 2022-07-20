@@ -2,6 +2,7 @@ import React from 'react';
 
 import {useForm} from 'react-hook-form';
 import  {className} from 'classnames';
+import NumberFormat from 'react-number-format';
 
 
 
@@ -126,6 +127,10 @@ const SignUp=()=>{
         {/* <small> {errors.firstName && <p  className='form-text text-danger'>this field is required</p>} </small> */}
         <small className='form-text text-danger'>{errors.firstName?.message}</small>
           </div>
+
+  
+
+
           <div className='form-group   mb-3'>
           <label>Last Name</label>
           <input type='text' id='lastname' placeholder='please enter last name' className='form-control' name='lastname' {...register('lastname',{required:{
@@ -292,7 +297,7 @@ const SignUp=()=>{
             <small className='form-text text-danger'>{errors.zipcode?.type==="required" && "please enter zipcode"}</small>
             <small className='form-text text-danger'>{errors.zipcode?.type==="minLength" && "this field is required min 4 characters"}</small>
             <small className='form-text text-danger'>{errors.zipcode?.type==="maxLength" && "this field is required max 10 characters"}</small>
-            
+           
           </div>
           <input type='submit' value='submit' />
         </form>
