@@ -1,0 +1,73 @@
+{
+  "name": "brandiq-task3",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "assert": "^2.0.0",
+    "axios": "^0.27.2",
+    "bootstrap": "^5.2.0",
+    "browserify-fs": "^1.0.0",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "constants-browserify": "^1.0.0",
+    "crypto-browserify": "^3.12.0",
+    "fs-json-store": "^8.0.1",
+    "fs-react": "^0.0.4",
+    "https-browserify": "^1.0.0",
+    "net-browserify": "^0.2.4",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.33.1",
+    "react-markdown": "^8.0.3",
+    "react-scripts": "5.0.1",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1",
+    "rn-nodeify": "^10.3.0",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "tls-browserify": "^0.2.2",
+    "url": "^0.11.0",
+    "util": "^0.12.4",
+    "web-vitals": "^2.1.4",
+    "write-json": "^3.0.1",
+    "write-json-file": "^5.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
+  "node": {
+    "fs": false,
+    "path": false
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
