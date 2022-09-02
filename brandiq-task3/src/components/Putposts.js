@@ -4,6 +4,7 @@ import React, {useState,useEffect} from 'react'
 
 function PutPosts() {
 
+    //This is a comment
       const [data,setData] = useState([]);
 
       const [title,setTitle] = useState('');
