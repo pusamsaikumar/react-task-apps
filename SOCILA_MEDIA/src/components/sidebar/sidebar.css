@@ -4,6 +4,8 @@
     height: calc(100vh - 50px);
     font-family: 'Roboto', sans-serif;
     overflow-y: scroll;
+    position: sticky;
+    top: 50px;
 }
 ::-webkit-scrollbar{
 width: 5px;

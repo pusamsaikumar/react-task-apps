@@ -4,12 +4,15 @@ import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import {Link} from 'react-router-dom';
 
 function Topbar() {
   return (
     <div className='topbar-container'>
         <div className='top-left'>
+         <Link to='/' style={{textDecoration:"none"}}>
             <span className='top-logo'>SAI SOCIAL MEDIA</span>
+         </Link>
         </div>
         <div className="top-center">
            <div className='topbar-search'>
