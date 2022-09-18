@@ -3,6 +3,7 @@
     flex:4;
     font-family: 'Robot',sans-serif;
     /* overflow-y: scroll; */
+    padding: 10px;
 }
 .rightbarWrapper{
     padding: 20px 20px 0 0 ;
@@ -73,4 +74,21 @@ margin-right: 15px;
     flex-direction: column;
     margin-left: 20px;
     margin-bottom: 20px;
+}
+.rightbarFollowBtn{
+    background-color: darkgreen;
+    color: whitesmoke;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.rightbarFollowBtn:focus{
+    outline: none;
 }

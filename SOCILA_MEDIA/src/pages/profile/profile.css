@@ -1,11 +1,15 @@
 .profile{
     display: flex;
     font-family: sans-serif,"Robot";
+    width: 100%;
+   
 }
+
 .profileRight{
-    flex: 9;
-    /* background-color: rgb(111, 111, 167);
-    color:whitesmoke; */
+    width: 100%;
+    flex: 9; 
+     /* background-color: rgb(111, 111, 167); */
+    color:rgb(95, 81, 81); 
 }
 .profileRightBottom{
     display: flex;

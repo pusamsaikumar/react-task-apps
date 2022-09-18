@@ -2,10 +2,12 @@
     
     width: 100%;
     /* background-color: rgb(163, 183, 163); */
-    height: 170px;
+  
     border-radius: 10px;
     -webkit-box-shadow: -2px 1px 32px 4px rgba(192, 175, 175, 0.41); 
     box-shadow: -2px 1px 32px 4px rgba(0,0,0,0.41);
+    margin-bottom: 10px;
+    padding-bottom: 20px;
 }
 .sideWrapper{
     padding: 20px;
@@ -67,4 +69,19 @@
 .sharebtn:hover{
     background-color: darkred;
     color: rgb(234, 212, 212);
+}
+.shareImgContainer{
+    position: relative;
+    padding: 0 20px 10px 20px;
+}
+.shareImage{
+    width: 100%;
+    object-fit: cover;
+}
+.cancelImg{
+    position: absolute;
+    top:0;
+    right:20px;
+    cursor: pointer;
+    opacity: 0.6;
 }

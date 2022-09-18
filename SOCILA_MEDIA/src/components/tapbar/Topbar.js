@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './topbar.css';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import {Link} from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 function Topbar() {
+   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+   const {users} = useContext(AuthContext);
   return (
     <div className='topbar-container'>
         <div className='top-left'>
@@ -39,7 +42,17 @@ function Topbar() {
                   <span className='topIconBage'>10</span>
                </div>
             </div>
-            <img className='topImg' src="/assets/person/1.jpeg"  alt="" />
+            <Link to={`/profile/${users.username}`}>
+          <img
+            src={
+              users.profilePicture
+                ? PF + users.profilePicture
+                : PF + "person/noAvatar.png"
+            }
+            alt=""
+            className="topImg"
+          />
+        </Link>
         </div>
     </div>
   )
