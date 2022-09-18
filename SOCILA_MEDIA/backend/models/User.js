@@ -1,48 +1,63 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-    username: {  type: String, unique: true, required: true },
-    email: { type: String, unique: true, required: true },
-    password: { type: String, required: true},
-    profilePicture:{
-        type:String,
-        default:''
+const UserSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      require: true,
+      min: 3,
+      max: 20,
+      unique: true,
     },
-    coverPicture:{
-        type:String,
-        default:''
+    email: {
+      type: String,
+      required: true,
+      max: 50,
+      unique: true,
     },
-    followers:{
-        type:Array,
-        default:[]
+    password: {
+      type: String,
+      required: true,
+      min: 6,
     },
-    followings:{
-        type:Array,
-        default:[]
+    profilePicture: {
+      type: String,
+      default: "",
     },
-    isAdmin:{
-        type:Boolean,
-        default:false
+    coverPicture: {
+      type: String,
+      default: "",
     },
-    desc:{
-        type:String,
-        max:50
+    followers: {
+      type: Array,
+      default: [],
     },
-    city:{
-        type:String,
-        max:50
+    followings: {
+      type: Array,
+      default: [],
     },
-    from:{
-        type:String,
-        max:50
+    isAdmin: {
+      type: Boolean,
+      default: false,
     },
-    relationship:{
-        type:String,
-        enum:[1,2,3]
-    }
-},
-{timestamps:true}
-
+    desc: {
+      type: String,
+      max: 50,
+    },
+    city: {
+      type: String,
+      max: 50,
+    },
+    from: {
+      type: String,
+      max: 50,
+    },
+    relationship: {
+      type: Number,
+      enum: [1, 2, 3],
+    },
+  },
+  { timestamps: true }
 );
 
-module.exports = mongoose.model('User',UserSchema);
+module.exports = mongoose.model("User", UserSchema);
