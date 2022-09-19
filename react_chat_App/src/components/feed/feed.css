@@ -1,0 +1,8 @@
+.feed{
+    flex: 6;
+    background-color: rgb(233, 233, 250);
+    font-family: "Robot",sans-serif;
+};
+.feedWrapper{
+    padding: 20px;
+}

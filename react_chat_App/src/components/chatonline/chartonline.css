@@ -1,0 +1,27 @@
+.chartOnlineFriend{
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.chartOnlineImgContainer{
+    position: relative;
+}
+.chartOnlineImg{
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
+    margin-right: 10px;
+    border: 2px solid whitesmoke;
+}
+.chartOnlineBadge{
+    width: 10px;
+    height: 10px;
+    background-color: limegreen;
+    border: 1px solid whitesmoke;
+    border-radius: 50px;
+    position: absolute;
+    top: 2px;
+    right: 6px;
+}
