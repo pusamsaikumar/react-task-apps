@@ -22,8 +22,8 @@ function Conversations({conversation,currentUser}) {
 
   return (
     <div className='conversation'>
-        <img src={user ?  PF+user.profilePicture : PF + '/person/noAvatar3.png'} alt="" className="conversationImg" />
-        <spna className="coversationName" >{user.username}</spna>
+        <img src={user ?  PF + user.profilePicture : PF+'/person/noAvatar2.png'} alt="" className="conversationImg" /> 
+         <span className="coversationName" >{user.username}</span>
     </div>
   )
 }

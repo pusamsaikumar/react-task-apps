@@ -1,39 +1,57 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import './chartonline.css';
 
-function ChartOnline() {
+function ChartOnline({onlineUsers,currentId,setCurrentChat}) {
+
+    const [friends,setFriends] = useState([]);
+    const [onlinefriends,setOnlinefriends] = useState([]);
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+    useEffect(()=>{
+        const getFriends = async()=>{
+            const res = await axios.get('http://localhost:5000/users/friends/' + currentId);
+            setFriends(res.data)
+        };
+        getFriends(); 
+    },[currentId]);
+     console.log(friends)
+
+    //  useEffect(() => {
+    //     setOnlinefriends(friends.filter((f) => onlineUsers.includes(f._id)));
+    //   }, [friends, onlineUsers]);
+    
+    console.log(onlineUsers);
+
+    const handleClick = async(user)=>{
+        try{
+            const res = await axios.get(`http://localhost:5000/conversations/find/${currentId}/${user._id}`);
+            setCurrentChat(res.data)
+        }catch(err){
+            console.log(err)
+        }
+    }
+
   return (
     <div className='chartOnline'>
-        <div className="chartOnlineFriend">
+       {
+        friends.map((online)=>(
+            <div className="chartOnlineFriend" key={online._id} onClick={()=>handleClick(online)} >
             <div className="chartOnlineImgContainer">
-            <img src="https://images.unsplash.com/photo-1551509134-2f9d4ec80a9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" className="chartOnlineImg" />
+            <img src={online?.profilePicture ? PF+ online.profilePicture : PF+'/person/noAvatar.png'} alt="" className="chartOnlineImg" />
                 <div className="chartOnlineBadge"></div>
             </div>
-            <span className="chartOnlineName">sai charan</span>
+            <span className="chartOnlineName">{online?.username}</span>
         </div>
-        <div className="chartOnlineFriend">
-            <div className="chartOnlineImgContainer">
-            <img src="https://images.unsplash.com/photo-1551509134-2f9d4ec80a9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" className="chartOnlineImg" />
-                <div className="chartOnlineBadge"></div>
-            </div>
-            <span className="chartOnlineName">sai charan</span>
-        </div>
-        <div className="chartOnlineFriend">
-            <div className="chartOnlineImgContainer">
-            <img src="https://images.unsplash.com/photo-1551509134-2f9d4ec80a9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" className="chartOnlineImg" />
-                <div className="chartOnlineBadge"></div>
-            </div>
-            <span className="chartOnlineName">sai charan</span>
-        </div>
-        <div className="chartOnlineFriend">
-            <div className="chartOnlineImgContainer">
-            <img src="https://images.unsplash.com/photo-1551509134-2f9d4ec80a9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" className="chartOnlineImg" />
-                <div className="chartOnlineBadge"></div>
-            </div>
-            <span className="chartOnlineName">sai charan</span>
-        </div>
+        ))
+       }
+       
     </div>
   )
-}
+}    
+             
+            
+export default ChartOnline;
 
-export default ChartOnline
+

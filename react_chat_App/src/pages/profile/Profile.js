@@ -35,7 +35,7 @@ function Profile() {
             <div className="profileRightTop">
                 <div className="profileCover">
                 <img src={users.coverPicture  ? PF + users.coverPicture : PF+'/person/noCover2.png'} alt="" className="profileCoverImg" />
-                  <img src={users.profilePicture ? PF+ users.profilePicture  : PF+'/person/noAvatar3.png'} alt="" className="profileUserImg" />
+                  <img src={users.profilePicture ? PF+ users.profilePicture  : PF+'/person/noAvatar2.png'} alt="" className="profileUserImg" />
                 
                 </div>
                 <div className="profileInfo">

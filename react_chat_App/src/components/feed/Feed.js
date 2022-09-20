@@ -25,7 +25,7 @@ function Feed({username}) {
     
     };
     fetchPost();
-  },[username,users._id])
+  },[username,users])
   return (
     <div className='feed'>
       <div className='feedWrapper' style={{padding:20}}>

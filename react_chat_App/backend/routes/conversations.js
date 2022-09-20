@@ -28,6 +28,20 @@ router.get('/:userId',async(req,res)=>{
     }catch(err){
         res.status(500).send(err);
     }
+});
+
+// conversation between two friends
+router.get('/find/:firstUserId/:secondUserId',async(req,res)=>{
+    try{
+            const conversation = await Conversation.findOne({
+                members:{
+                    $all:[req.params.firstUserId,req.params.secondUserId]
+                }
+            });
+            res.status(200).send(conversation)
+    }catch(err){
+        res.status(500).send(err)
+    }
 })
 
 module.exports = router;
