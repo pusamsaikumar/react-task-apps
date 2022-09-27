@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import saiTube from '../images/logo.png';
+ import saiTube from '../images/logo.png';
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
@@ -17,45 +17,60 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import FlagIcon from '@mui/icons-material/Flag';
 import HelpIcon from '@mui/icons-material/Help';
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
-  background-color:darkblue;
+  //background-color:aliceblue;
+  background-color:${({theme})=>theme.bg};
   flex: 1;
  // overflow-y:scroll;
- height:100vh;
-
-  color: white;
-  font-size: 14px;
+  //height:100vh;
+ height:100%;
+color:${({theme})=>theme.text};
+//   color: seagreen;
+  font-size: 12px;
   position: sticky;
   top: 0; 
+  border-right:${({theme})=>theme.borderRight};
+  
 `;
 const Logo = styled.div`
   display:flex;
+  
   align-items:center;
-  gap:5px;
+  gap:10px;
   font-weight:bold;
-  margin-bottom:10px;
+  margin-bottom:5px;
   
 `
 const Img = styled.img`
-  height:20px;
+  height:15px;
 
 `
 const Wrapper =styled.div`
-  padding:10px 26px;
+  padding:5px 26px;
 `;
 const Item = styled.div`
 display:flex;
 align-items:center;
 gap:20px;
 padding:5px 0px;
+// color:${({theme})=>theme.text};
+&:hover{
+  // background-color:${({theme})=>theme.textSoft}
+  background-color:lightgrey;
+  color:darkblue;
 `;
 const Hr = styled.hr`
-  margin:8px 0px;
-  border:0.5px solid grey;
+  margin:5px 0px;
+  
+ border:0.1px solid ${({theme})=>theme.borderRight};;
 `;
 const Login = styled.div`
-font-size:12.5px
+font-size:12.5px;
+margin-bottom:10px
+
 `;
 const Button = styled.button`
 border:1px solid darkorange;
@@ -65,32 +80,48 @@ color:darkorange;
 display:flex;
 align-items:center;
 gap:5px;
-border-radius:3px;
 margin-top:10px;
+border-radius:3px;
 font-weight:500;
 cursor:pointer;
+`;
+
+const Title = styled.h2`
+  font-weight:700;
+  font-size:14px;
+  color:silver;
+  margin-bottom:5px
 `
-function Menu() {
+function Menu({darkmode,setDarkmode}) {
+const {currentUser} = useSelector((state)=>state.user)
+
+
   return (
     <Container>
       <Wrapper>
+        <Link to='/' style={{textDecoration:"none",color:"white"}} >
         <Logo>
           <Img src={saiTube}/>
           SaiTube
         </Logo>
+        </Link>
+       
         <Item>
           <HomeIcon />
           Home
         </Item>
-        <Item>
+        <Link to="trends" style={{textDecoration:"none",color:"inherit"}}>
+        <Item >
           <ExploreIcon />
           Explore
         </Item>
-
+        </Link>
+        <Link to="subscriptions" style={{textDecoration:"none",color:"inherit"}}>
         <Item>
           <SubscriptionsIcon />
           Subscriptions
         </Item>
+        </Link>
         <Hr />
         <Item>
           <VideoLibraryIcon />
@@ -101,14 +132,21 @@ function Menu() {
           History
         </Item>
         <Hr />
-        <Login>
+        {
+          !currentUser && <>
+          <Login>
         Sign in to like videos, comment, and subscribe.
+          <Link to="/signin" style={{textDecoration:"none"}}>
           <Button>
             <AccountCircleIcon />
             SIGN IN
           </Button>
+          </Link>
         </Login>
         <Hr />
+          </>
+        }
+        <Title>BEST OF SAITUBE</Title>
         <Item>
           <LibraryMusicIcon />
           Music
@@ -146,11 +184,11 @@ function Menu() {
           <HelpIcon />
           Help
         </Item>
-        <Item>
+        <Item onClick={()=>setDarkmode(!darkmode)}>
           <SettingsBrightnessOutlinedIcon />
-          Mode
+         {darkmode ? "Light" : "Dark"} Mode
         </Item>
-        <Hr />
+     
       </Wrapper>
     </Container>
   )
