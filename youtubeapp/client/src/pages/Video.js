@@ -114,7 +114,7 @@ function Video() {
             height="720"
             src="https://www.youtube.com/watch?v=fPuLnzSjPLE"
             title = "Youtube video player"
-            frameborder ="0"
+           
             allowFullScreen
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;picture-in-picture'
           
@@ -161,7 +161,7 @@ function Video() {
         <Hr />
         <Comments />
       </Content>
-      <Recommendation>
+      /* <Recommendation>
         <Card type="small" />
         <Card type="small" />
         <Card type="small" />
@@ -177,7 +177,7 @@ function Video() {
      
 
 
-      </Recommendation>
+      </Recommendation> */
     </Container>
   )
 }

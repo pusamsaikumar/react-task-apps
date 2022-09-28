@@ -15,7 +15,7 @@ function Home({type}) {
   useEffect(() => { 
     const getFetchedVideos = async()=>{
       const res= await axios.get(`http://localhost:8800/videos/${type}`);
-      console.log(res.data);
+      console.log(res.data)
       setVideos(res.data);
     };
     getFetchedVideos();

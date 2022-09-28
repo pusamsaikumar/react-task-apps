@@ -67,16 +67,20 @@ margin:15px 0px;
 border:1px solid lightgrey
 `
 function Card({type,video}) {
+
   const [chennel,setChennel] = useState({});
- useEffect(()=>{
-    const getFetchChennel = async()=>{
-      const response = await axios.get(`http://localhost:8800/users/find/${video.userId}`);
-      setChennel(response.data);
-    }
-    getFetchChennel();
- },[video]);
+  
+ 
+
+ useEffect(() => {
+    const fetchChannel = async () => {
+      const res = await axios.get(`/users/find/${video.userId}`);
+      setChennel(res.data);
+    };
+    fetchChannel();
+  }, [video.userId]);
   return (
-   <Link to="/video/test" style={{textDecoration:"none"}}>
+   <Link to={`/video/${video._id}`} style={{textDecoration:"none"}}>
     <Container type={type}>
         <Image type={type}  src={video.imgUrl}/>
       <Details type={type} >

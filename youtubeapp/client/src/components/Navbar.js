@@ -54,6 +54,7 @@ border-radius:3px;
 font-weight:500;
 cursor:pointer;
 `;
+
 const Avatar = styled.img`
 width:32px;
 height:32px;
@@ -82,7 +83,7 @@ function Navbar() {
        {currentUser ? (
         <User>
          <VideoCallIcon />
-         <Avatar />
+         <Avatar src={currentUser.img} />
          {currentUser.name}
         </User>
        ) :(

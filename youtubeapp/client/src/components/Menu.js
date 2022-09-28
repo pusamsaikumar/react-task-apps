@@ -25,8 +25,8 @@ const Container = styled.div`
   background-color:${({theme})=>theme.bg};
   flex: 1;
  // overflow-y:scroll;
-  //height:100vh;
- height:100%;
+  height:100vh;
+ //height:100%;
 color:${({theme})=>theme.text};
 //   color: seagreen;
   font-size: 12px;

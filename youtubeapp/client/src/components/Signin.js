@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { loginFailure, loginStart, loginSuccess } from '../redux/UserSlice';
+import {auth,provider} from '../firebase';
+import { signInWithPopup } from 'firebase/auth';
+
+
+
 
 const Contaienr = styled.div`
 display: flex;
@@ -62,6 +67,21 @@ const Button = styled.button`
         color:grey;
     }
 `;
+const GoogleButton = styled.button`
+padding:10px 20px;
+background-color:darkorange;
+color:white;
+font-weight:500;
+border-radius:5px;
+cursor:pointer;
+border:none;
+font-size:15px;
+width:100%;
+&:hover{
+    background-color:lightgrey;
+    color:grey;
+}
+`;
 const More = styled.div`
  display: flex;
  margin-top:10px;
@@ -94,9 +114,40 @@ function Signin() {
               setPassword("");
           }catch(err){
              //console.log(err);
-             dispatch(loginFailure(err))
+            // dispatch(loginFailure(err))
           }
   } 
+
+  // google authenticatin with firebase ;
+ const SinginWithGoogle = async()=>{
+  dispatch(loginStart());
+    signInWithPopup(auth,provider)
+    .then((result)=>{
+     
+      axios.post('http://localhost:8800/auth/google',{
+        name:result.user.displayName,
+        email:result.user.email,
+        img:result.user.photoURL,
+      })
+      .then((res)=>{
+        dispatch(loginSuccess(res.data))
+      }
+      
+      )
+      .catch((err)=>{})
+      // axios.post('http://localhost:8800/auth/google',{
+      //   name:result.user.displayName,
+      //   email:result.user.email,
+      //   img:result.user.photoURL,
+      // })
+      // .then((res) => dispatch(loginSuccess(res.data)))
+      // .catch((err)=>{
+      //   dispatch(loginFailure(err))
+      // })
+    }).catch((err)=>{
+      dispatch(loginFailure(err))
+    })
+ }
 
   return (
     <Contaienr>
@@ -108,10 +159,12 @@ function Signin() {
             <Button onClick={handleClick}>Sign In</Button>
 
             <Title> or </Title>
+            <GoogleButton onClick={SinginWithGoogle}>Signin with Google</GoogleButton>
+            <Title> or </Title>
             <Input type="text" placeholder="Username" onChange={(e)=>setName(e.target.value)} value={name} />
             <Input type="email" placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)} />
             <Input type="password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />
-            <Button>Sign Up</Button>
+            <Button style={{backgroundColor:"steelblue"}} >Sign Up</Button>
         </Wrapper>
         <More>
                 English(USA)
