@@ -1,5 +1,7 @@
-import React from 'react';
+import axios from 'axios';
+import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
+import {format} from 'timeago.js'
  
 const Container = styled.div`
  display:flex;
@@ -33,15 +35,25 @@ font-size:14px;
 `;
 
 
-function Comment() {
+function Comment({comment}) {
+   const [chennel,setChennel] = useState({});
+   // fetch users 
+   useEffect(()=>{
+      const getUsers = async()=>{
+        const res = await axios.get( `http://localhost:8800/users/find/${comment.userId}`);
+      setChennel(res.data);
+      console.log(res.data)
+      };
+      getUsers();
+   },[comment.userId])
+
+
   return (
     <Container>
-       <Avatar src = "https://i.ytimg.com/vi/fXvYevVmYJE/maxresdefault.jpg" /> 
+       <Avatar src ={chennel.img} /> 
        <Details>
-         <Name>Jhon Deo <Date> 1 day, ago..</Date></Name>
-         <Text>
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?
-         </Text>
+         <Name>{chennel.name} <Date> {format(chennel.createdAt)}</Date></Name>
+         <Text>{comment.desc}</Text>
        </Details>
     </Container>
   )

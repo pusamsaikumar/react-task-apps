@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 import Card from '../components/Card';
@@ -18,7 +18,12 @@ import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import { stepLabelClasses } from '@mui/material';
 import Comments from '../components/Comments';
-
+import {useSelector,useDispatch} from 'react-redux';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
+import { fetchSuccess,fetchStart,fetchFailure, like ,dislike, subscription} from '../redux/VideoSlice';
+import { format } from 'timeago.js';
 const Container = styled.div`
 display:flex;
 gap:10px
@@ -94,7 +99,12 @@ color:${({theme})=>theme.textSoft}
 const ChennelDescription = styled.p`
 font-size:14px;
 `;
-
+// videoframe:
+const VideoFrame = styled.video`
+   width:100%;
+   max-height:720px;
+   object-fit:cover;
+`;
 const Subscribe = styled.button`
 background-color:#cc1a00;
 height:max-content;
@@ -105,34 +115,99 @@ border-radius:3px;
 cursor:pointer;
 `;
 function Video() {
+const {currentUser} = useSelector((state)=>state.user);
+const {currentVideo} = useSelector((state)=>state.video);
+const dispatch = useDispatch();
+
+const [video,setVideo] = useState({});
+const [chennel,setChennel] = useState({});
+
+const path = useLocation().pathname.split("/")[2];
+ console.log(path);
+
+
+
+   useEffect(()=>{
+    const getFetch= async()=>{
+        try{
+          const videoRes = await axios.get(`http://localhost:8800/videos/find/${path}`);
+          const chennelRes = await axios.get(`http://localhost:8800/users/find/${videoRes.data.userId}`);
+          /* console.log(chennelRes.data);
+           console.log(videoRes.data); */
+          dispatch(fetchSuccess(videoRes.data));
+          setChennel(chennelRes.data); 
+
+        }catch(err){
+
+        }
+    };
+    getFetch();
+   },[path,dispatch]);
+
+
+  
+
+
+//dislikes videso
+
+const handleLike = async ()=>{
+
+
+
+    try{
+      const response =   await axios.put(`http://localhost:8800/users/like/${currentVideo._id}`);
+      dispatch(like(response.data))
+    }catch(err){
+
+    }
+};
+
+
+// like a video
+const handleDislike= async()=>{
+
+
+
+  try{
+    const response =   await axios.put(`http://localhost:8800/users/dislike/${currentVideo._id}`);
+    dispatch(dislike(response.data))
+  }catch(err){
+
+  }
+}
+
+// sub a videos
+const handleSubscription = async()=>{
+  currentUser.subscribedUsers.includes(chennel._id) ?
+  await axios.put(`http://localhost:8800/users/unsub/${chennel._id}`)
+  : await axios.put(`http://localhost:8800/users/sub/${chennel._id}`) ;
+  dispatch(subscription(chennel._id));
+}
+
   return (
     <Container>
       <Content>
         <VideoWrapper>
-          <iframe
-            width="100%"
-            height="720"
-            src="https://www.youtube.com/watch?v=fPuLnzSjPLE"
-            title = "Youtube video player"
-           
-            allowFullScreen
-            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;picture-in-picture'
-          
-          >
-
-          </iframe>
+          <VideoFrame src={currentVideo.videoUrl} controls />
         </VideoWrapper>
-        <Title>Test Video</Title>
+         <Title>{currentVideo.title}</Title> 
         <Details>
-          <Info>7,898,555 views . June 25, 2022</Info>
+        <Info>{currentVideo.views} views . {format(currentVideo.createdAt)}</Info>
           <Buttons>
-            <Button>
-              <ThumbUpOffAltIcon />
-              123
+            <Button  onClick={handleLike} >
+              {
+                currentVideo.likes.includes(currentUser._id) ? (<ThumbUpIcon />) : <ThumbUpOffAltIcon />
+              }
+              
+              {currentVideo.likes.length}
               </Button>
-            <Button>
-               <ThumbDownOffAltIcon/>
-              Dislike
+            <Button onClick={handleDislike} >
+              {
+                currentVideo.dislikes.includes(currentUser._id) ? (<ThumbDownIcon />) :    <ThumbDownOffAltIcon/>
+              }
+            
+               {currentVideo.dislikes.length}
+              
             </Button>
             <Button>
               <ReplyIcon />
@@ -147,37 +222,21 @@ function Video() {
         <Hr />
         <Chennel>
           <ChennelInfo>
-            <Image src = "https://i.ytimg.com/vi/fXvYevVmYJE/maxresdefault.jpg" />
+            <Image src={chennel.image} />
             <ChennelDetails>
-               <ChennelName>sai kumar</ChennelName>
-               <ChennelCounter>200k, subscribers</ChennelCounter>
+               <ChennelName>{chennel.name}</ChennelName>
+               <ChennelCounter>{chennel.subcribers}, subscribers</ChennelCounter>
                <ChennelDescription>
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?
+             
                </ChennelDescription>
             </ChennelDetails>
           </ChennelInfo>
-          <Subscribe>Subscribe</Subscribe>
+          <Subscribe >{currentUser.subscribedUsers.includes(chennel._id) ? "SUBSCRIBED" : "SUBSCRIBE"}</Subscribe>
         </Chennel>
         <Hr />
-        <Comments />
+        <Comments videoId={currentVideo._id} />
       </Content>
-      /* <Recommendation>
-        <Card type="small" />
-        <Card type="small" />
-        <Card type="small" />
-        <Card type="small" />
-        <Card type="small" />
-        <Card type="small" />
-        <Card type="small" />
-        <Card type="small" />
-        <Card type="small" />
-        <Card type="small" />
-        
-
-     
-
-
-      </Recommendation> */
+   
     </Container>
   )
 }
