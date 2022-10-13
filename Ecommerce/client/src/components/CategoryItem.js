@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {mobile} from "../resposive";
 
 const Container = styled.div`
    position:relative;
@@ -12,7 +13,8 @@ const Image = styled.img`
   width:100%;
   height:100%;
   object-fit:cover;
-  flex:1
+  flex:1;
+  ${mobile({height:"20vh",width:"100vw"})}
 `;
 const Info = styled.div`
    position:absolute;

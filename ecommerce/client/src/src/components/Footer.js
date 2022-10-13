@@ -8,10 +8,12 @@ import PinterestIcon from '@mui/icons-material/Pinterest';
 import RoomIcon from '@mui/icons-material/Room';
 import PhoneIcon from '@mui/icons-material/Phone';
 import MailIcon from '@mui/icons-material/Mail';
+import {mobile} from "../resposive";
 
 const Container = styled.div`
 display:flex;
-
+margin-bottom:10px;
+${mobile({flexDirection:"column"})};
 `;
 const Left = styled.div`
 flex:1;
@@ -48,6 +50,7 @@ justify-content:center;
 const Center = styled.div`
 flex:1;
 padding:20px;
+${mobile({display:"none"})}
 `;
 const Title = styled.h3`
 margin-bottom:30px;
@@ -66,7 +69,7 @@ margin-bottom:10px;
 const Right = styled.div`
 flex:1;
 padding:20px;
-
+${mobile({backgroundColor:"#FCF6F5FF"})}
 `;
 
 const ContactItem = styled.div`

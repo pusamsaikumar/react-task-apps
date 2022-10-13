@@ -1,6 +1,8 @@
 import React from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import styled from  "styled-components";
+import { mobile } from '../resposive';
+import { textAlign } from '@mui/system';
 
 const Container = styled.div`
 height:60vh;
@@ -15,6 +17,7 @@ border-radius:3px;
 const Title = styled.h1`
  font-size:70px;
  color: white;
+ ${mobile({textAlign:"center",fontSize:"50px"})}
 `;
 const Desc = styled.div`
 font-weight:300;
@@ -22,6 +25,7 @@ font-size:24px;
 margin-bottom:20px;
 // color:seashell;
 color:darkred;
+${mobile({textAlign:"center",fontSize:"18px"})}
 
 `;
 const InfoContainer = styled.div`
@@ -33,6 +37,7 @@ display:flex;
 
 justify-content:space-between;
 border:1px solid lightgrey;
+${mobile({width:"90%"})};
 `;
 const Input = styled.input`
 border:none;

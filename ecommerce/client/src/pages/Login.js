@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from "styled-components";
+import {mobile} from "../resposive";
 
 const Container = styled.div`
   width:100vw;
   height:100vh;
-  background:linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0.2)),url("https://c1.wallpaperflare.com/preview/427/745/192/notebook-natural-laptop-macbook.jpg") center;
+  background:linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0.2)),url("https://techbeasts.com/wp-content/uploads/2016/12/4k-wallpaper-5-1024x640.jpg") center;
  background-size:cover;
  display:flex;
  align-items:center;
@@ -13,8 +14,9 @@ const Container = styled.div`
 const Wrapper = styled.div`
   padding:20px;
   width:25%;
-  background-color:whitesmoke;
+  background-color:lightgrey;
   border-radius:6px;
+  ${mobile({width:"75%"})};
 `;
 const Title =styled.h1`
 font-weight:300;
@@ -30,6 +32,9 @@ const Input = styled.input`
   min-width:40%;
   margin:10px 0px;
   padding:10px;
+  outline:none;
+  border:1px solid lightgrey;
+  border-radius:6px;
 `;
 const Button = styled.button`
 width:25%;

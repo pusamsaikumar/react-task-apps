@@ -17,7 +17,7 @@ opacity:0;
  top:0;
  left:0;
  z-index:3;
- background-color:rgba(0,0,,0,0.2);
+ background-color:rgba(0,0,0,0.2);
  transition:all 0.5s ease;
  cursor:pointer;
 `;

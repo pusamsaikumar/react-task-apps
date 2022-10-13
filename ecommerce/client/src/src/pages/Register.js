@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import { mobile } from '../resposive';
 
 const Container = styled.div`
 width:100vw;
@@ -14,6 +15,7 @@ padding:20px;
 width:40%;
 background-color:ghostwhite;
 border-radius:10px;
+${mobile({width:"75%"})};
 `;
 const Title = styled.h1`
 font-weight:300;
